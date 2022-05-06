@@ -1,0 +1,47 @@
+.wrap2 {
+  margin: 0 auto;
+  padding: 0 15px;
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 960px;
+}
+.wrap1 {
+  display: table-cell;
+  vertical-align: middle;
+}
+.content {
+  position: relative;
+  padding: 18px 0 36px 0;
+}
+.IndexPageContent {
+  display: flex;
+}
+.img__content img {
+  width: 600px;
+ 
+}
+.IndexPageContent__content {
+  margin-right: 18px;
+  flex: 1;
+}
+.index__column  {
+  width: 320px;
+  min-height: 625px;
+  background-color: aliceblue;
+}
+.login__card {
+  padding: 25px;
+  text-align: center;
+}
+.img__login img {
+  width: 50px;
+  height: 50px;
+  border-radius: 25%;
+}
+.loginWithEmail .change{
+  cursor: pointer;
+}
+.inputTypeFile{
+}
+
