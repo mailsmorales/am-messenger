@@ -24,7 +24,7 @@ const LoginEmail = () => {
         autoComplete="current-password"
         variant="standard"
         />
-        <Button sx={{marginTop:1, width:200, marginBottom:1}} onClick={signIn} className="accept" variant="contained">Подтвердить</Button>
+        <Button sx={{marginTop:1, width:200, marginBottom:1}}  className="accept" variant="contained">Подтвердить</Button>
         </>
     )
 }
