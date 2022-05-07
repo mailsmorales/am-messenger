@@ -11,8 +11,8 @@ import "./register.css";
 
 
 const Register = () => {
-  const { googleSignIn, user } = UserAuth();
   const [ haveAnAccount, setHaveAnAccount ] = useState(false)
+  const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate()
 
   const handleGoogleSignIn = async () => {
