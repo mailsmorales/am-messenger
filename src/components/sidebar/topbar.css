@@ -94,3 +94,12 @@
   object-fit: cover;
   cursor: pointer;
 }
+
+.listItemIcon p{
+  color: #252525;
+  margin-left: 30px;
+}
+
+.list a{
+  text-decoration: none;
+}
