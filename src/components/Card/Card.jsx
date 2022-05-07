@@ -8,11 +8,11 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Fab from '@mui/material/Fab';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { UserAuth } from "../../context/AuthContext";
 import {faker} from '@faker-js/faker'
-import FloatingActionButtons from './UpdDel';
+import OptionDots from '../OptionDots/OptionDots';
+import CardButtons from '../Card/CardButtons'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,12 +25,13 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function RecipeReviewCard() {
-  const [count, setCount] = useState(0)
+export default function PostCard() {
+  const [likeCount, setLikeCount] = useState(0)
+  const [DisLikeCount, setDisLikeCount] = useState(0)
   const { user } = UserAuth();
 
   const counter = () => {
-    setCount(count +1)
+    setLikeCount(count +1)
   }
 
 
@@ -41,7 +42,7 @@ export default function RecipeReviewCard() {
           <Avatar src={faker.image.avatar()} aria-label="recipe" />
         }
         action={
-          <FloatingActionButtons />
+          <OptionDots />
         }
         title={user.displayName}
         subheader="September 14, 2016"
@@ -61,9 +62,9 @@ export default function RecipeReviewCard() {
         alt="Paella dish"
       />
       <CardActions disableSpacing>
-        <Fab color="secondary" onClick={counter} aria-label="like">
-          <FavoriteIcon />{ count}
-        </Fab>
+        <CardButtons />
+          {/* <ThumbUpIcon onClick={() => setLikeCount(likeCount +1)} />{likeCount}
+          <ThumbDownIcon onClick={() => setDisLikeCount(DisLikeCount +1)} />{DisLikeCount} */}
       </CardActions>
     </Card>
   );

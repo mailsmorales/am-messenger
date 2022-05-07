@@ -1,6 +1,5 @@
 import "./profile.css";
 import React, { useState } from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
@@ -10,12 +9,11 @@ import Avatar from '@mui/material/Avatar';
 import ShareIcon from '@mui/icons-material/Share';
 import { UserAuth } from "../../context/AuthContext";
 import faker from "@faker-js/faker";
-import { storage } from '../../firebase/config'
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import RecipeReviewCard from "./Card";
+import PostCard from "../../components/Card/Card";
 
 const Profile = () => {
-  const { logOut, user } = UserAuth();
+  const { user } = UserAuth();
+  const [image, setImage] = useState(null)
 
   const handleChangeFile = (e) => {
      if(e.target.files[0]) {
@@ -24,19 +22,9 @@ const Profile = () => {
   }
 
 
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-    
-  };
-
   return (
     <>
       {/* <Topbar /> */}
-      <Sidebar />
       <div className="profile">
         <div className="profileRight">
           <div className="profileRightTop">
@@ -98,20 +86,21 @@ const Profile = () => {
               <MoodIcon className="addSmileIcon" />
               <p>Feelings</p>
               </div>
-              <Button sx={{marginLeft:'500px'}} variant="contained" color="secondary">
+              <Button sx={{marginLeft:'500px'}} variant="contained" color="primary">
               Share
               </Button>
             </div>
           </Box>
-          <RecipeReviewCard />
+          <PostCard />
           </div>
           <div className="profileRightBottomRight">
             <div className="profileShare">
               <label>
-                <ShareIcon sx={{marginLeft:'50px'}} />
+                <ShareIcon sx={{marginLeft:'40%'}} />
                 <input className="profileInputFile" type="file" />
+                <p>Добавьте свое фото!</p>
               </label>
-              <Button sx={{marginLeft:'10px'}} color="secondary" variant="contained">Подтвердить</Button>
+              <Button sx={{marginLeft:'10px'}} color="primary" variant="contained">Подтвердить</Button>
             </div>
           </div>
           </div>
