@@ -20,6 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
+import TextField from '@mui/material/TextField';
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -128,8 +129,14 @@ export default function PersistentDrawerLeft() {
           </Typography>
           <div className="topbarCenter">
             <div className="searchbar">
-              <Search className="searchIcon" />
-              <input placeholder="Search for friend" className="searchInput" />
+            <TextField
+              sx={{width:'70%', marginLeft:'170px', color:'white'}}
+              hiddenLabel
+              id="filled-hidden-label-small"
+              placeholder="Найдите друзей"
+              variant="filled"
+              size="small"
+            />
             </div>
           </div>
           <div className="topbarIcons">
@@ -184,7 +191,7 @@ export default function PersistentDrawerLeft() {
           <Link to="/">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <HomeIcon /> <p>Home</p>
+                <HomeIcon /> <p>Новости</p>
               </ListItemIcon>
             </ListItem>
           </Link>
@@ -192,20 +199,20 @@ export default function PersistentDrawerLeft() {
           <Link to="/messages">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <MessageIcon /> <p>Messages</p>
+                <MessageIcon /> <p>Мессенджер</p>
               </ListItemIcon>
             </ListItem>
           </Link>
           <Link to="/profile" >
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <AccountBoxIcon /> <p>Profile</p>
+                <AccountBoxIcon /> <p>Профиль</p>
               </ListItemIcon>
             </ListItem>
           </Link>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <PeopleAltIcon /> <p>Friends</p>
+              <PeopleAltIcon /> <p>Друзья</p>
             </ListItemIcon>
           </ListItem>
         </List>
@@ -213,17 +220,17 @@ export default function PersistentDrawerLeft() {
         <List>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <PhotoLibraryIcon /> <p>Photos</p>
+              <PhotoLibraryIcon /> <p>Фотографии</p>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <AudiotrackIcon /> <p>Music</p>
+              <AudiotrackIcon /> <p>Музыка</p>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <SearchIcon /> <p>Search for friends</p>
+              <SearchIcon /> <p>Найти друзей</p>
             </ListItemIcon>
           </ListItem>
         </List>

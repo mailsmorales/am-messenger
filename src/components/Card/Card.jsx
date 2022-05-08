@@ -45,7 +45,7 @@ export default function PostCard() {
           <OptionDots />
         }
         title={user.displayName}
-        subheader="September 14, 2016"
+        subheader="10 мая 2022"
       />
       <CardContent>
         <Typography sx={{fontSize:18, color:'#252525'}} variant="body2" color="text.secondary">
