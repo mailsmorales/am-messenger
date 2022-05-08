@@ -7,13 +7,13 @@ import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import SearchIcon from '@mui/icons-material/Search';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import AudiotrackIcon from '@mui/icons-material/Audiotrack';
-import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
-import MessageIcon from '@mui/icons-material/Message';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from "@mui/icons-material/Search";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import AudiotrackIcon from "@mui/icons-material/Audiotrack";
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import MessageIcon from "@mui/icons-material/Message";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import HomeIcon from "@mui/icons-material/Home";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,8 +24,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { auth, db } from "../../firebase/config";
+import { signOut } from "firebase/auth";
+import { updateDoc, doc } from "firebase/firestore";
+import Button from "@mui/material/Button";
 import "./topbar.css";
 import Home from "../../pages/home/Home";
+import { async } from "@firebase/util";
 
 const drawerWidth = 240;
 
@@ -80,7 +85,7 @@ export default function PersistentDrawerLeft() {
   const handleSignOut = async () => {
     try {
       await logOut();
-      useNavigate
+      useNavigate;
     } catch {
       error;
     }
@@ -98,8 +103,15 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const handleSignOutFromOnline = async () => {
+    await updateDoc(doc(db, 'users', auth.currentUser.uid),{
+      isOnline: false
+    })
+    await signOut(auth);
+  };
+
   return (
-    <Box sx={{ display: "flex", overflow:'hidden' }}>
+    <Box sx={{ display: "flex", overflow: "hidden" }}>
       <CssBaseline />
       <AppBar position="static" open={open}>
         <Toolbar>
@@ -118,10 +130,7 @@ export default function PersistentDrawerLeft() {
           <div className="topbarCenter">
             <div className="searchbar">
               <Search className="searchIcon" />
-              <input
-                placeholder="Search for friend"
-                className="searchInput"
-              />
+              <input placeholder="Search for friend" className="searchInput" />
             </div>
           </div>
           <div className="topbarIcons">
@@ -136,8 +145,8 @@ export default function PersistentDrawerLeft() {
             </div>
           </div>
           {/* <Link to="/register"> Войти </Link> */}
-          {user?.email ? (
-            <Button variant="#51a8ff" onClick={handleSignOut}>
+          {user?.email &&  auth.currentUser ? (
+            <Button variant="#51a8ff" onClick={handleSignOutFromOnline}>
               Выйти
             </Button>
           ) : (
@@ -174,48 +183,49 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List className="list">
           <Link to="/">
-          <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <HomeIcon /> <p>Home</p>
-          </ListItemIcon>
-          </ListItem>
+            <ListItem button>
+              <ListItemIcon className="listItemIcon">
+                <HomeIcon /> <p>Home</p>
+              </ListItemIcon>
+            </ListItem>
           </Link>
+          {/* поменять тут */}
           <Link to="/messages">
-          <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <MessageIcon /> <p>Messages</p>
-          </ListItemIcon>
-          </ListItem>
+            <ListItem button>
+              <ListItemIcon className="listItemIcon">
+                <MessageIcon /> <p>Messages</p>
+              </ListItemIcon>
+            </ListItem>
           </Link>
-          <Link to="/profile">
-          <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <AccountBoxIcon /> <p>Profile</p>
-          </ListItemIcon>
-          </ListItem>
+          <Link to="/profile" >
+            <ListItem button>
+              <ListItemIcon className="listItemIcon">
+                <AccountBoxIcon /> <p>Profile</p>
+              </ListItemIcon>
+            </ListItem>
           </Link>
           <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <PeopleAltIcon /> <p>Friends</p>
-          </ListItemIcon>
+            <ListItemIcon className="listItemIcon">
+              <PeopleAltIcon /> <p>Friends</p>
+            </ListItemIcon>
           </ListItem>
         </List>
         <Divider />
         <List>
-        <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <PhotoLibraryIcon /> <p>Photos</p>
-          </ListItemIcon>
+          <ListItem button>
+            <ListItemIcon className="listItemIcon">
+              <PhotoLibraryIcon /> <p>Photos</p>
+            </ListItemIcon>
           </ListItem>
           <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <AudiotrackIcon /> <p>Music</p>
-          </ListItemIcon>
+            <ListItemIcon className="listItemIcon">
+              <AudiotrackIcon /> <p>Music</p>
+            </ListItemIcon>
           </ListItem>
           <ListItem button>
-          <ListItemIcon className="listItemIcon">
-            <SearchIcon /> <p>Search for friends</p>
-          </ListItemIcon>
+            <ListItemIcon className="listItemIcon">
+              <SearchIcon /> <p>Search for friends</p>
+            </ListItemIcon>
           </ListItem>
         </List>
       </Drawer>
