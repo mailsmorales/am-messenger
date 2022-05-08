@@ -29,7 +29,7 @@ import { signOut } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import Button from "@mui/material/Button";
 import "./topbar.css";
-import { async } from "@firebase/util"; 
+import { async } from "@firebase/util";
 
 const drawerWidth = 240;
 
@@ -80,7 +80,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const { user, logOut } = UserAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     try {
@@ -104,11 +104,11 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleSignOutFromOnline = async () => {
-    await updateDoc(doc(db, 'users', auth.currentUser.uid),{
-      isOnline: false
-    })
+    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+      isOnline: false,
+    });
     await signOut(auth);
-    navigate('/register')
+    navigate("/register");
   };
   return (
     <Box sx={{ display: "flex", overflow: "hidden" }}>
@@ -145,7 +145,7 @@ export default function PersistentDrawerLeft() {
             </div>
           </div>
           {/* <Link to="/register"> Войти </Link> */}
-          {user?.email &&  user ? (
+          {user?.email && user ? (
             <Button variant="#51a8ff" onClick={handleSignOutFromOnline}>
               Выйти
             </Button>
@@ -197,7 +197,7 @@ export default function PersistentDrawerLeft() {
               </ListItemIcon>
             </ListItem>
           </Link>
-          <Link to="/profile" >
+          <Link to="/profile">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
                 <AccountBoxIcon /> <p>Profile</p>
