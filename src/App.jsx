@@ -5,13 +5,23 @@ import Home from "./pages/home/Home";
 import Messages from "./pages/message/Messages";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <>
+      <Sidebar />
       <Routes>
         <Route path="/register" element={<Register />}></Route>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Protected>
+              <Home />
+            </Protected>
+          }
+        ></Route>
         <Route
           path="/profile"
           element={
@@ -20,13 +30,18 @@ function App() {
             </Protected>
           }
         ></Route>
-        <Route exact path="/messages" element={<Messages />}></Route>
+        <Route
+          exact
+          path="/messages"
+          element={
+            <Protected>
+              <Messages />
+            </Protected>
+          }
+        ></Route>
       </Routes>
     </>
   );
 }
 
 export default App;
-
-
-//новости мессенджер
