@@ -29,7 +29,6 @@ import { signOut } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import Button from "@mui/material/Button";
 import "./topbar.css";
-import Home from "../../pages/home/Home";
 import { async } from "@firebase/util";
 
 const drawerWidth = 240;
