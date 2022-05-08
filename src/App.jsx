@@ -5,7 +5,6 @@ import Home from "./pages/home/Home";
 import Messages from "./pages/message/Messages";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
-// import { UserAuth } from "./context/AuthContext";
 import Sidebar from './components/sidebar/Sidebar'
 
 function App() {

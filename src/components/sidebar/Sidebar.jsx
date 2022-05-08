@@ -80,7 +80,7 @@ export default function PersistentDrawerLeft() {
     } catch {
       error;
     }
-    console.log(error);
+    // console.log(error);
   };
 
   const theme = useTheme();
@@ -131,8 +131,8 @@ export default function PersistentDrawerLeft() {
               <Notifications />
             </div>
           </div>
-          <Link to="/register"> Войти </Link>
-          {/* {user?.email ? (
+          {/* <Link to="/register"> Войти </Link> */}
+          {user?.email ? (
             <Button variant="#51a8ff" onClick={handleSignOut}>
               Выйти
             </Button>
@@ -140,7 +140,7 @@ export default function PersistentDrawerLeft() {
             <Button variant="#51a8ff">
               <Link to="/register"></Link>Войти
             </Button>
-          )} */}
+          )}
         </Toolbar>
       </AppBar>
 
