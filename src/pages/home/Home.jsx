@@ -4,6 +4,7 @@ import "./home.css"
 export default function Home() {
   return (
     <>
+    <Sidebar/>
       <div className="homeContainer">
         adwdaw
       </div>

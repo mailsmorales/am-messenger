@@ -88,18 +88,8 @@
     cursor: pointer;
 }
 
-.profileRightBottom .postBox .postBoxBot .addSmileIcon{
-    margin-left: 10px;
-}
-
-.profileRightBottom .postBox .postBoxBot .postBoxAddPhoto,
-.profileRightBottom .postBox .postBoxBot .postBoxAddSmile{
-    display: flex;
-}
-
-.profileRightBottom .postBox .postBoxBot .postBoxAddPhoto p,
-.profileRightBottom .postBox .postBoxBot .postBoxAddSmile p{
-    margin-top: 10px;
+.profileRightBottom .postBox .postBoxBot  p{
+    cursor: pointer;
 }
 
 .profileRightBottom .profilePost .profilePostTop .profilePostTopInfo{

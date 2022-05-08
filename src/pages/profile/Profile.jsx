@@ -10,6 +10,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import { UserAuth } from "../../context/AuthContext";
 import faker from "@faker-js/faker";
 import PostCard from "../../components/Card/Card";
+import SideBar from '../../components/sidebar/Sidebar'
 
 const Profile = () => {
   const { user } = UserAuth();
@@ -24,6 +25,7 @@ const Profile = () => {
 
   return (
     <>
+    <SideBar/>
       <div className="profile">
         <div className="profileRight">
           <div className="profileRightTop">
@@ -65,7 +67,7 @@ const Profile = () => {
             src={faker.image.avatar()}
             sx={{ width: 50, height: 50 }}
               />
-            <p>What's in your mind {user.displayName}?</p>
+            <p>О чем вы думаете {user.displayName}?</p>
             </div>
             <div className="postBoxMid">
             <TextField sx={{
@@ -77,16 +79,17 @@ const Profile = () => {
             variant="standard" />
             </div>
             <div className="postBoxBot">
-              <div className="postBoxAddPhoto">
+              <label>
               <AddPhotoAlternateIcon className="addPhotoIcon" />
-              <p>Add photo</p>
+              <input className="profileInputFile" type="file" />
+              <p>Фото</p>
+              </label>
+              <div>
+              <MoodIcon sx={{marginLeft:'10px'}} className="addSmileIcon" />
+              <p>Смайлики</p>
               </div>
-              <div className="postBoxAddSmile">
-              <MoodIcon className="addSmileIcon" />
-              <p>Feelings</p>
-              </div>
-              <Button sx={{marginLeft:'500px'}} variant="contained" color="primary">
-              Share
+              <Button sx={{marginLeft:'64%', height:'40px'}} variant="contained" color="primary">
+              Опубликовать
               </Button>
             </div>
           </Box>
@@ -99,7 +102,7 @@ const Profile = () => {
                 <input className="profileInputFile" type="file" />
                 <p>Добавьте свое фото!</p>
               </label>
-              <Button sx={{marginLeft:'10px'}} color="primary" variant="contained">Подтвердить</Button>
+              <Button sx={{marginLeft:'10px', height:'40px'}} color="primary" variant="contained">Подтвердить</Button>
             </div>
           </div>
           </div>
