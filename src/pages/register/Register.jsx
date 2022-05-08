@@ -56,7 +56,7 @@ const Register = () => {
                   <img src={LogoImg} alt="" />
                 </div>
                 <div className="loginWithEmail">
-                <div className="change" onClick={alreadyReg}>{haveAnAccount === false ? (<h4>Уже есть аккаунт?</h4>) : (<h4>Еще нет аккаунта?</h4>)}</div>
+                
                   {haveAnAccount === false ? (
                     <LoginEmail />
                   ) : (
@@ -75,7 +75,7 @@ const Register = () => {
                     Войти через Google
                   </Button>
                 </div>
-                <br />
+                <div className="change" onClick={alreadyReg}>{haveAnAccount === false ?  (<h4>Еще нет аккаунта?</h4>):(<h4>Уже есть аккаунт?</h4>)}</div>
               </div>
             </div>
           </div>
