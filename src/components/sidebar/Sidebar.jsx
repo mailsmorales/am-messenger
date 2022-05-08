@@ -29,7 +29,7 @@ import { signOut } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import Button from "@mui/material/Button";
 import "./topbar.css";
-import { async } from "@firebase/util";
+import { async } from "@firebase/util"; 
 
 const drawerWidth = 240;
 
@@ -60,8 +60,8 @@ const AppBar = styled(MuiAppBar, {
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
+    width: calc(100% - `${drawerWidth}px`),
+    marginLeft:` ${drawerWidth}px`,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -80,6 +80,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const { user, logOut } = UserAuth();
+  const navigate = useNavigate()
 
   const handleSignOut = async () => {
     try {
@@ -107,8 +108,8 @@ export default function PersistentDrawerLeft() {
       isOnline: false
     })
     await signOut(auth);
+    navigate('/register')
   };
-
   return (
     <Box sx={{ display: "flex", overflow: "hidden" }}>
       <CssBaseline />
@@ -144,7 +145,7 @@ export default function PersistentDrawerLeft() {
             </div>
           </div>
           {/* <Link to="/register"> Войти </Link> */}
-          {user?.email &&  auth.currentUser ? (
+          {user?.email &&  user ? (
             <Button variant="#51a8ff" onClick={handleSignOutFromOnline}>
               Выйти
             </Button>
