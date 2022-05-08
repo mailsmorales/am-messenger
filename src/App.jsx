@@ -10,6 +10,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 function App() {
   return (
     <>
+    
       <Sidebar />
       <Routes>
         <Route path="/register" element={<Register />}></Route>
