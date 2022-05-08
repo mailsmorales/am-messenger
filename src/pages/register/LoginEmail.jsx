@@ -27,6 +27,7 @@ const LoginEmail = () => {
     if (!email || password) {
       setData({ ...data, error: "все поля обязательны к заполнению" });
     }
+    
     try {
       const result = await signInWithEmailAndPassword(auth, email, password);
       await updateDoc(doc(db, "users", result.user.uid), {
