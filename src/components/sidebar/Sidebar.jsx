@@ -24,6 +24,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import Button from "@mui/material/Button";
 import "./topbar.css";
 import Home from "../../pages/home/Home";
 
