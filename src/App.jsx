@@ -5,12 +5,10 @@ import Home from "./pages/home/Home";
 import Messages from "./pages/message/Messages";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
-import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
   return (
     <>
-      <Sidebar />
       <Routes>
         <Route path="/register" element={<Register />}></Route>
         <Route

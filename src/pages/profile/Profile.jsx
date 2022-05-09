@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import ShareIcon from '@mui/icons-material/Share';
 import { UserAuth } from "../../context/AuthContext";
 import faker from "@faker-js/faker";
+import ProfileBack from '../../assets/img/back.jpg'
 import PostCard from "../../components/Card/Card";
 import SideBar from '../../components/sidebar/Sidebar'
 
@@ -94,16 +95,6 @@ const Profile = () => {
             </div>
           </Box>
           <PostCard />
-          </div>
-          <div className="profileRightBottomRight">
-            <div className="profileShare">
-              <label>
-                <ShareIcon sx={{marginLeft:'40%'}} />
-                <input className="profileInputFile" type="file" />
-                <p>Добавьте свое фото!</p>
-              </label>
-              <Button sx={{marginLeft:'10px', height:'40px'}} color="primary" variant="contained">Подтвердить</Button>
-            </div>
           </div>
           </div>
         </div>
