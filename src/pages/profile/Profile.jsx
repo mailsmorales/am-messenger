@@ -95,16 +95,6 @@ const Profile = () => {
           </Box>
           <PostCard />
           </div>
-          <div className="profileRightBottomRight">
-            <div className="profileShare">
-              <label>
-                <ShareIcon sx={{marginLeft:'40%'}} />
-                <input className="profileInputFile" type="file" />
-                <p>Добавьте свое фото!</p>
-              </label>
-              <Button sx={{marginLeft:'10px', height:'40px'}} color="primary" variant="contained">Подтвердить</Button>
-            </div>
-          </div>
           </div>
         </div>
       </div>
