@@ -9,7 +9,6 @@ import Avatar from '@mui/material/Avatar';
 import ShareIcon from '@mui/icons-material/Share';
 import { UserAuth } from "../../context/AuthContext";
 import faker from "@faker-js/faker";
-import ProfileBack from '../../assets/img/back.jpg'
 import PostCard from "../../components/Card/Card";
 import SideBar from '../../components/sidebar/Sidebar'
 
