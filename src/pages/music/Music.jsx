@@ -1,3 +1,4 @@
+create-music-page-with-video
 import { Button } from "@material-ui/core";
 import { Container } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -6,7 +7,7 @@ import "./music.css";
 
 export default function Music() {
   return (
-    <>
+    <create-music-page-with-video
       <Sidebar />
       <Container sx={{ maxWidth: "1200px" }}>
         <div className="music">
@@ -144,6 +145,10 @@ export default function Music() {
           </div>
         </div>
       </Container>
+    <Sidebar/>
+      <div className="musicContainer">
+        adwdawfgbnhmj
+      </div>
     </>
   );
 }

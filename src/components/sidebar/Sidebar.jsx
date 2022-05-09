@@ -20,7 +20,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
-import TextField from '@mui/material/TextField';
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -81,6 +80,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
   const { user, logOut } = UserAuth();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     try {
@@ -104,12 +104,12 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleSignOutFromOnline = async () => {
-    await updateDoc(doc(db, 'users', auth.currentUser.uid),{
-      isOnline: false
-    })
+    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+      isOnline: false,
+    });
     await signOut(auth);
+    navigate("/register");
   };
-
   return (
     <Box sx={{ display: "flex", overflow: "hidden" }}>
       <CssBaseline />
@@ -129,14 +129,8 @@ export default function PersistentDrawerLeft() {
           </Typography>
           <div className="topbarCenter">
             <div className="searchbar">
-            <TextField
-              sx={{width:'70%', marginLeft:'170px', color:'white'}}
-              hiddenLabel
-              id="filled-hidden-label-small"
-              placeholder="Найдите друзей"
-              variant="filled"
-              size="small"
-            />
+              <Search className="searchIcon" />
+              <input placeholder="Search for friend" className="searchInput" />
             </div>
           </div>
           <div className="topbarIcons">
@@ -151,7 +145,7 @@ export default function PersistentDrawerLeft() {
             </div>
           </div>
           {/* <Link to="/register"> Войти </Link> */}
-          {user?.email &&  auth.currentUser ? (
+          {user?.email && user ? (
             <Button variant="#51a8ff" onClick={handleSignOutFromOnline}>
               Выйти
             </Button>
@@ -191,7 +185,7 @@ export default function PersistentDrawerLeft() {
           <Link to="/">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <HomeIcon /> <p>Новости</p>
+                <HomeIcon /> <p>Home</p>
               </ListItemIcon>
             </ListItem>
           </Link>
@@ -199,20 +193,20 @@ export default function PersistentDrawerLeft() {
           <Link to="/messages">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <MessageIcon /> <p>Мессенджер</p>
+                <MessageIcon /> <p>Messages</p>
               </ListItemIcon>
             </ListItem>
           </Link>
-          <Link to="/profile" >
+          <Link to="/profile">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
-                <AccountBoxIcon /> <p>Профиль</p>
+                <AccountBoxIcon /> <p>Profile</p>
               </ListItemIcon>
             </ListItem>
           </Link>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <PeopleAltIcon /> <p>Друзья</p>
+              <PeopleAltIcon /> <p>Friends</p>
             </ListItemIcon>
           </ListItem>
         </List>
@@ -220,17 +214,17 @@ export default function PersistentDrawerLeft() {
         <List>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <PhotoLibraryIcon /> <p>Фотографии</p>
+              <PhotoLibraryIcon /> <p>Photos</p>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <AudiotrackIcon /> <p>Музыка</p>
+              <AudiotrackIcon /> <p>Music</p>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
-              <SearchIcon /> <p>Найти друзей</p>
+              <SearchIcon /> <p>Search for friends</p>
             </ListItemIcon>
           </ListItem>
         </List>
