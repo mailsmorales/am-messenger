@@ -8,7 +8,6 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {faker} from '@faker-js/faker'
 import OptionDots from '../OptionDots/OptionDots';
 import CardButtons from '../Card/CardButtons'
@@ -85,7 +84,7 @@ export default function PostCard() {
         action={
           <OptionDots />
         }
-        title='awdwda'
+        title={user.name}
         subheader="10 мая 2022"
       />
       <CardContent>
