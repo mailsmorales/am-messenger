@@ -89,12 +89,12 @@ opacity: 0.4;
     margin-left: 250px;
 }
 
-.profileRightBottom .postBox, 
-.profileRightBottom .profilePost{
+.postBox, 
+.profilePost{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.profileRightBottom .profilePost{
+.profilePost{
     margin-top: 50px;
 }
 
@@ -129,49 +129,48 @@ opacity: 0.4;
     cursor: pointer;
 }
 
-.profilePost .profilePostTop .profilePostTopInfo{
+.profilePostTop .profilePostTopInfo{
     display: flex;
     padding: 15px;
 }
 
- .profilePost .profilePostTop .profilePostTopInfo img{
+.profilePostTop .profilePostTopInfo img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-.profilePost .profilePostTop .profilePostTopInfo h4{
+.profilePostTop .profilePostTopInfo h4{
     margin: 10px 0 0 20px;
 }
 
-.profilePost .profilePostTop .profilePostTopDesc p{
+.profilePostTop .profilePostTopDesc p{
     margin: 10px 0 0 20px;
 }
 
-.profilePost .profilePostTop .profilePostTopDesc{
+.profilePostTop .profilePostTopDesc{
     overflow-x:hidden; 
     max-width: 880px;
 }
 
-.profilePost .profilePostMid img{
+.profilePostMid img{
     width: 800px auto;
     height: 508px auto;
 }
-
-.profilePost .profilePostMid{
+ .profilePostMid{
     padding: 20px;
 }
 
-.profilePost .profilePostBot{
+.profilePostBot{
     padding: 20px;
     display: flex;
 }
 
-.profilePost .profilePostBot .profilePostBotLikes p{
+.profilePostBot .profilePostBotLikes p{
     margin: -30px 0 0 40px;
 }
 
-.profilePost .profilePostBot h4{
+.profilePostBot h4{
     margin: 0 0 0 600px;
     cursor: pointer;
     text-decoration: underline;
