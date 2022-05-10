@@ -39,9 +39,7 @@
   height: 50px;
   border-radius: 25%;
 }
-.loginWithEmail .change{
+.change{
   cursor: pointer;
-}
-.inputTypeFile{
 }
 

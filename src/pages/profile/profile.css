@@ -28,6 +28,43 @@
     margin: auto;
     top: 150px;
 }
+.img_container {
+    position: relative;
+}
+.profile_container {
+    display: flex;
+    justify-content: center;
+    margin-top: -6%;
+}
+.img_container img {
+    width: 150px;
+    height: 150px;
+    border-Radius: 50%;
+    object-Fit: cover;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 150px;
+    
+}
+.img_container:hover img {
+opacity: 0.4;
+
+}
+.img_container:hover .overlay {
+    opacity: 1;
+    
+}
+.overlay {
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-Radius: 50%;
+    left: 50%;
+    top: 50%;
+}
+
 
 .profileInfo{
     display: flex;
@@ -61,90 +98,80 @@
     margin-top: 50px;
 }
 
-.profileRightBottom .postBox .postBoxTop{
+.postBox .postBoxTop{
     padding: 15px;
     display: flex;
 }
-.profileRightBottom .postBox .postBoxTop .avatar{
+.postBox .postBoxTop .avatar{
     width: 80;
     height: 80px;
     border-radius: 50%;
 }
-.profileRightBottom .postBox .postBoxTop p{
+.postBox .postBoxTop p{
     color: gray;
     margin: 15px 0 0 20px;
 }
 
-.profileRightBottom .postBox .postBoxBot{
+.postBox .postBoxBot{
     display: flex;
     margin: 40px 0 0 50px;
 }
 
-.profileRightBottom .postBox .postBoxBot .addPhotoIcon,
-.profileRightBottom .postBox .postBoxBot .addSmileIcon{
+.postBox .postBoxBot .addPhotoIcon,
+.postBox .postBoxBot .addSmileIcon{
     width:40px;
     height:40px;
     margin-right: 10px; 
     cursor: pointer;
 }
 
-.profileRightBottom .postBox .postBoxBot .addSmileIcon{
-    margin-left: 10px;
+.postBox .postBoxBot  p{
+    cursor: pointer;
 }
 
-.profileRightBottom .postBox .postBoxBot .postBoxAddPhoto,
-.profileRightBottom .postBox .postBoxBot .postBoxAddSmile{
-    display: flex;
-}
-
-.profileRightBottom .postBox .postBoxBot .postBoxAddPhoto p,
-.profileRightBottom .postBox .postBoxBot .postBoxAddSmile p{
-    margin-top: 10px;
-}
-
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo{
+.profilePost .profilePostTop .profilePostTopInfo{
     display: flex;
     padding: 15px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo img{
+ .profilePost .profilePostTop .profilePostTopInfo img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo h4{
+.profilePost .profilePostTop .profilePostTopInfo h4{
     margin: 10px 0 0 20px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopDesc p{
+.profilePost .profilePostTop .profilePostTopDesc p{
     margin: 10px 0 0 20px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopDesc{
+.profilePost .profilePostTop .profilePostTopDesc{
     overflow-x:hidden; 
     max-width: 880px;
 }
 
-.profileRightBottom .profilePost .profilePostMid img{
+.profilePost .profilePostMid img{
     width: 800px auto;
     height: 508px auto;
 }
 
-.profileRightBottom .profilePost .profilePostMid{
+.profilePost .profilePostMid{
     padding: 20px;
 }
 
-.profileRightBottom .profilePost .profilePostBot{
+.profilePost .profilePostBot{
     padding: 20px;
     display: flex;
 }
 
-.profileRightBottom .profilePost .profilePostBot .profilePostBotLikes p{
+.profilePost .profilePostBot .profilePostBotLikes p{
     margin: -30px 0 0 40px;
 }
 
-.profileRightBottom .profilePost .profilePostBot h4{
+.profilePost .profilePostBot h4{
     margin: 0 0 0 600px;
     cursor: pointer;
     text-decoration: underline;
@@ -165,3 +192,4 @@
 .profileShare label {
     margin-left: 50px;
 }
+
