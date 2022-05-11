@@ -73,29 +73,6 @@ const Profile = () => {
     <Header />
       <img className="profileCoverImg" src={Artwork} />
       <Container sx={{ maxWidth: "1200px" }}>
-        <div className="profile">
-          <div className="profileRight">
-            {user && (
-              <>
-                <div className="profileRightTop">
-                  <div className="profileCover">
-                    <div className="profile_container">
-                      <div className="img_container">
-                        <img src={user.avatar || Img} alt="avatar" />
-                        <div className="overlay">
-                          <div>
-                            <label htmlFor="photo">
-                              <Camera />
-                            </label>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              style={{ display: "none" }}
-                              id="photo"
-                              onChange={(e) => setImg(e.target.files[0])}
-                            />
-                          </div>
-      
       <div className="profile">
         <div className="profileRight">
           {user && (
@@ -181,12 +158,13 @@ const Profile = () => {
                     <PostCard />
                   </div>
                 </div>
-              </>
+                </div>
+            </>
             )}
-          </div>
         </div>
+      </div>
       </Container>
-    </>
+      </>
   );
 };
 

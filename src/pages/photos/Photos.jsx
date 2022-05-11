@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { Container } from "@mui/material";
 import { Button } from "@material-ui/core";
 import "./Photos.css";
 import { storage } from "../../firebase/config";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
+import Header from "../../components/Header/Header";
+// import { v4 } from "uuid";
 
 const Photo = () => {
   const [photo, setPhoto] = useState(null);
@@ -15,7 +15,7 @@ const Photo = () => {
 
   const uploadPhoto = () => {
     if (photo == null) return;
-    const photoRef = ref(storage, `photos/${photo.name + v4()}`);
+    const photoRef = ref(storage, `photos/${photo.name}`);
     uploadBytes(photoRef, photo).then(() => {
       alert("Фото загружается...");
     });
@@ -33,7 +33,7 @@ const Photo = () => {
 
   return (
     <>
-      <Sidebar />
+      <Header />
       <Container sx={{ maxWidth: "1200px" }}>
         <div className="photos">
           <div className="photos-top">
