@@ -96,9 +96,6 @@ function Messages() {
         </div>
       </Container>
     
-    <div>
-        adawdawdawdawdaawawdawddddddddddd
-    </div>
     </>
   );
 }

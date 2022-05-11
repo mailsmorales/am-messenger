@@ -59,11 +59,13 @@ export default function DrawerHeader() {
               </ListItemIcon>
             </ListItem>
           </Link>
+          <Link to='/frends'>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
               <PeopleAltIcon /> <p>Friends</p>
             </ListItemIcon>
           </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>

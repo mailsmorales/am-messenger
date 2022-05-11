@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Protected from "./components/topbar/Protected";
+import Frends from "./pages/frends/Frends";
 import Home from "./pages/home/Home";
 import Messages from "./pages/message/Messages";
 import Music from "./pages/music/Music";
@@ -54,6 +55,15 @@ function App() {
           element={
             <Protected>
               <Photos />
+            </Protected>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/frends"
+          element={
+            <Protected>
+              <Frends />
             </Protected>
           }
         ></Route>
