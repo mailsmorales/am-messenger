@@ -12,9 +12,6 @@ function App() {
     <>
       <Routes>
         <Route path="/register" element={<Register />}></Route>
-create-music-page-with-video
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/music" element={<Music />}></Route>
         <Route
           exact
           path="/"
@@ -38,6 +35,15 @@ create-music-page-with-video
           element={
             <Protected>
               <Messages />
+            </Protected>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/music"
+          element={
+            <Protected>
+              <Music />
             </Protected>
           }
         ></Route>
