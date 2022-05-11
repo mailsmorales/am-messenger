@@ -19,6 +19,7 @@ import {
 import User from "../../components/user/User";
 import { onAuthStateChanged } from "firebase/auth";
 import MessageForm from "../../components/messageForm/MessageForm";
+import Header from '../../components/Header/Header';
 
 function Messages() {
   const [user, setUser] = useState();
@@ -63,7 +64,6 @@ function Messages() {
     e.preventDefault();
 
   };
-import Header from '../../components/Header/Header';
 
   return (
     <>

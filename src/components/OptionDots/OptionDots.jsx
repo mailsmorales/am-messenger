@@ -3,6 +3,9 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db, storage } from '../../firebase/config'
+import { deleteObject, ref } from 'firebase/storage'
 
 const options = [
     'Delete',
@@ -11,7 +14,7 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-export default function OptionDots() {
+export default function OptionDots({ id, imageUrl }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,6 +23,18 @@ export default function OptionDots() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleDelete = async () => {
+    try{
+      await deleteDoc(doc(db, "posts", id))
+      console.log(err);
+      const storageRef = ref(storage, imageUrl)
+      await deleteObject(storageRef)
+      
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div>
@@ -48,11 +63,12 @@ export default function OptionDots() {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-            {option}
+          <MenuItem onClick={handleDelete}>
+            <p>Delete</p>
           </MenuItem>
-        ))}
+            <MenuItem onClick={handleClose}>
+            <p>Change</p>
+          </MenuItem>
       </Menu>
     </div>
   );
