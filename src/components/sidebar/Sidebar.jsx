@@ -217,11 +217,13 @@ export default function PersistentDrawerLeft() {
               <PhotoLibraryIcon /> <p>Photos</p>
             </ListItemIcon>
           </ListItem>
-          <ListItem button>
-            <ListItemIcon className="listItemIcon">
-              <AudiotrackIcon /> <p>Music</p>
-            </ListItemIcon>
-          </ListItem>
+          <Link to="/music">
+            <ListItem button>
+              <ListItemIcon className="listItemIcon">
+                <AudiotrackIcon /> <p>Music</p>
+              </ListItemIcon>
+            </ListItem>
+          </Link>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
               <SearchIcon /> <p>Search for friends</p>
