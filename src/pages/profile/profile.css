@@ -7,7 +7,7 @@
 }
 
 .profileCover{
-    height: 320px;
+    /* height: 320px; */
     position: relative;
 }
 
@@ -85,9 +85,7 @@ opacity: 0.4;
     display: flex;
 }
 
-.profileRightBottom{
-    margin-left: 250px;
-}
+
 
 .profileRightBottom .postBox, 
 .profileRightBottom .profilePost{

@@ -85,7 +85,7 @@ export default function PostCard() {
         action={
           <OptionDots />
         }
-        title='awdwda'
+        title={user.name}
         subheader="10 мая 2022"
       />
       <CardContent>
