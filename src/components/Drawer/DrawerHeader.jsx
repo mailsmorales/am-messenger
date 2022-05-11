@@ -72,11 +72,13 @@ export default function DrawerHeader() {
               <PhotoLibraryIcon /> <p>Photos</p>
             </ListItemIcon>
           </ListItem>
-          <ListItem button>
+            <Link to="/music">
+            <ListItem button>
             <ListItemIcon className="listItemIcon">
               <AudiotrackIcon /> <p>Music</p>
             </ListItemIcon>
           </ListItem>
+            </Link>
           <ListItem button>
             <ListItemIcon className="listItemIcon">
               <SearchIcon /> <p>Search for friends</p>
