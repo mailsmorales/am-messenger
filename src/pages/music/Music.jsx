@@ -15,7 +15,7 @@ import axios from "axios";
 import { useState } from "react";
 import React from "react";
 import useVideos from "../../hooks/useVideos";
-import SearchBar from "../searchBar/SearchBar";
+import SearchBar from "../../components/searchBar/SearchBar";
 
 export default function Music() {
   const [videos, search, selectedVideo, setSelectedVideo] = useVideos();
