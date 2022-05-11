@@ -9,8 +9,9 @@ import Img from "../../assets/img/ali.jpg";
 import CircularStatic from '../Progress/CircularStatic'
 import { storage, db, auth } from "../../firebase/config";
 import { ref, getDownloadURL, uploadBytes, uploadBytesResumable } from "firebase/storage";
-import { getDoc, doc, updateDoc, Timestamp, collection } from "firebase/firestore";
+import { getDoc, doc, updateDoc, Timestamp, collection, addDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import './style.css'
 
 const CardCreate = () => {
   const [img, setImg] = useState("");
@@ -63,7 +64,7 @@ const CardCreate = () => {
   }
 
   const handleImageChange = (e) => {
-    setFormData({...formData, image: e.target.file[0] })
+    setFormData({...formData, image: e.target.files[0] })
   }
 
   const handlePublish = () => {
@@ -78,7 +79,7 @@ const CardCreate = () => {
     uploadImage.on("state_changed",
     (snapshot) => {
       const progressPercent = Math.round(
-        (snapshot.bytesTrasferred /snapshot.totalBytes) * 100
+        (snapshot.bytesTransferred /snapshot.totalBytes) * 100
       );
       setProgress(progressPercent)
     },
@@ -93,7 +94,20 @@ const CardCreate = () => {
 
       getDownloadURL(uploadImage.snapshot.ref)
       .then((url) => {
-        const postRef = collection()
+        const postRef = collection(db, "posts")
+        addDoc(postRef, {
+          description:formData.description,
+          imageUrl:url,
+          createdAt: Timestamp.now().toDate()
+        })
+        .then(() => {
+          toast("post added succesfully", {type:"success"})
+          setProgress(0)
+        })
+        .catch(err => {
+          console.log(err);
+          setProgress(0)
+        })
       })
     }
     )
@@ -135,7 +149,7 @@ const CardCreate = () => {
                 type="file" 
                 name="image" 
                 accept="image/*" 
-                onChange={(e) =>handleImageChange(e)} />
+                onChange={(e) => handleImageChange(e)} />
                 <p>Фото</p>
               </label>
               <div>
@@ -146,7 +160,8 @@ const CardCreate = () => {
                 <p>Смайлики</p>
               </div>
                 </div>
-              <Button
+                <div className="publish-and-progress">
+                <Button
                 sx={{ height: "40px", marginRight:'6%' }}
                 variant="contained"
                 color="primary"
@@ -155,8 +170,11 @@ const CardCreate = () => {
               >
                 Опубликовать
               </Button>
+              {progress === 0 ? null : (
+                <CircularStatic  />
+              )}
+                </div>
             </div>
-            <CircularStatic />
             </>
         )}
     </Box>

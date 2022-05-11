@@ -28,13 +28,10 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PostCard({ description, imageUrl, createdAt }) {
+export default function PostCard({ id, description, imageUrl, createdAt }) {
   const [user, setUser] = useState();
   const [img, setImg] = useState("");
 
-  const counter = () => {
-    setLikeCount(count +1)
-  }
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (_user) => {
       if (!user) getDoc(doc(db, "users", _user.uid)).then((docSnap) => setUser(docSnap.data())
@@ -82,7 +79,7 @@ export default function PostCard({ description, imageUrl, createdAt }) {
           <OptionDots />
         }
         title={user.name}
-        subheader="at least 1 minute ago"
+        subheader={createdAt.toDate().toDateString()}
         // {createdAt.toDate().toDateString()}
       />
       <CardContent>
@@ -98,7 +95,7 @@ export default function PostCard({ description, imageUrl, createdAt }) {
         alt="Paella dish"
       />
       <CardActions disableSpacing>
-        <CardButtons />
+        <CardButtons id={id} imageUrl={imageUrl}/>
       </CardActions>
     </Card>
     )}
