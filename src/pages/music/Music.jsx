@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import { Container } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import Header from "../../components/Header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
 import VideoMp4 from "../../assets/video/miyagi-tam-reveli.mp4";
 import VideoWebm from "../../assets/video/miyagi-tam-reveli.webm";
@@ -25,7 +26,7 @@ export default function Music() {
 
   return (
     <>
-      <Sidebar />
+      <Header />
       <Container sx={{ maxWidth: "1200px" }}>
         <div className="music">
           <div className="music__top">

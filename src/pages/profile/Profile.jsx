@@ -15,6 +15,7 @@ import { storage, db, auth } from "../../firebase/config";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import Header from "../../components/Header/Header";
 
 const Profile = () => {
   const [img, setImg] = useState("");
@@ -61,7 +62,7 @@ const Profile = () => {
   }, [img]);
   return (
     <>
-      <SideBar />
+      <Header />
       <div className="profile">
         <div className="profileRight">
           {user && (
