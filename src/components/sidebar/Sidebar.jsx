@@ -212,11 +212,13 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          <ListItem button>
-            <ListItemIcon className="listItemIcon">
-              <PhotoLibraryIcon /> <p>Photos</p>
-            </ListItemIcon>
-          </ListItem>
+          <Link to='/photos'>
+            <ListItem button>
+              <ListItemIcon className="listItemIcon">
+                <PhotoLibraryIcon /> <p>Photos</p>
+              </ListItemIcon>
+            </ListItem>
+          </Link>
           <Link to="/music">
             <ListItem button>
               <ListItemIcon className="listItemIcon">
