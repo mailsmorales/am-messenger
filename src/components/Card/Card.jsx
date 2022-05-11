@@ -8,7 +8,6 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import {faker} from '@faker-js/faker'
 import OptionDots from '../OptionDots/OptionDots';
 import CardButtons from '../Card/CardButtons'
 import Img from "../../assets/img/ali.jpg";
@@ -83,7 +82,8 @@ export default function PostCard({ description, imageUrl, createdAt }) {
           <OptionDots />
         }
         title={user.name}
-        subheader={createdAt.toDate().toDateString()}
+        subheader="at least 1 minute ago"
+        // {createdAt.toDate().toDateString()}
       />
       <CardContent>
         <Typography sx={{fontSize:18, color:'#252525'}} variant="body2" color="text.secondary">
