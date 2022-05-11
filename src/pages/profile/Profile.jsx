@@ -13,8 +13,19 @@ import Artwork from "../../assets/img/artwork.jpg";
 import Camera from "../../components/svg/Camera";
 import Delete from "../../components/svg/Delete";
 import { storage, db, auth } from "../../firebase/config";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+import {
+  ref,
+  getDownloadURL,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import {
+  getDoc,
+  doc,
+  updateDoc,
+  Timestamp,
+  collection,
+} from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@material-ui/core";
@@ -68,103 +79,155 @@ const Profile = () => {
     }
   }, [img]);
 
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, image: e.target.file[0] });
+  };
+
+  const handlePublish = () => {
+    if (!formData.description || formData.image) {
+      console.log("you need to fill all fields");
+    }
+
+    const storageRef = ref(
+      storage,
+      `/postsImages/${Date.now()}${formData.image.name}`
+    );
+
+    const uploadImage = uploadBytesResumable(storageRef, formData.image);
+
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {
+        const progressPercent = Math.round(
+          (snapshot.bytesTrasferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progressPercent);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        setFormData({
+          description: "",
+          image: "",
+        });
+
+        getDownloadURL(uploadImage.snapshot.ref).then((url) => {
+          const postRef = collection();
+        });
+      }
+    );
+  };
+
   return (
     <>
-    <Header />
+      <Header />
       <img className="profileCoverImg" src={Artwork} />
       <Container sx={{ maxWidth: "1200px" }}>
-      <div className="profile">
-        <div className="profileRight">
-          {user && (
-            <>
-              <div className="profileRightTop">
-                <div className="profileCover">
-                  <img className="profileCoverImg" src={Artwork} />
-                  <div className="profile_container">
-                    <div className="img_container">
-                      <img src={user.avatar || Img} alt="avatar" />
-                      <div className="overlay">
-                        <div>
-                          <label htmlFor="photo">
-                            <Camera />
-                          </label>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            style={{ display: "none" }}
-                            id="photo"
-                            onChange={(e) => setImg(e.target.files[0])}
-                          />
+        <div className="profile">
+          <div className="profileRight">
+            {user && (
+              <>
+                <div className="profileRightTop">
+                  <div className="profileCover">
+                    {/* <img className="profileCoverImg" src={Artwork} /> */}
+                    <div className="profile_container">
+                      <div className="img_container">
+                        <img src={user.avatar || Img} alt="avatar" />
+                        <div className="overlay">
+                          <div>
+                            <label htmlFor="photo">
+                              <Camera />
+                            </label>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              style={{ display: "none" }}
+                              id="photo"
+                              onChange={(e) => setImg(e.target.files[0])}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <div className="profileInfo">
+                      <h4 className="profileInfoName">{user.name}</h4>
+                    </div>
                   </div>
-                  <div className="profileInfo">
-                    <h4 className="profileInfoName">{user.name}</h4>
-                  </div>
-                </div>
-                <div className="profileRightBottomAll">
-                  <div className="profileRightBottom">
-                    <Box
-                      className="postBox"
-                      sx={{
-                        width: 915,
-                        height: 240,
-                        backgroundColor: "primary.white",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      <div className="postBoxTop">
-                        <Avatar
-                          alt="Remy Sharp"
-                          src={user.avatar || Img}
-                          sx={{ width: 50, height: 50 }}
-                        />
-                        <p>О чем вы думаете {user.name} ?</p>
-                      </div>
-                      <div className="postBoxMid">
-                        <TextField
-                          sx={{
-                            marginLeft: "50px",
-                            width: "90%",
-                          }}
-                          required
-                          id="standard-basic"
-                          variant="standard"
-                        />
-                      </div>
-                      <div className="postBoxBot">
-                        <label>
-                          <AddPhotoAlternateIcon className="addPhotoIcon" />
-                          <input className="profileInputFile" type="file" />
-                          <p>Фото</p>
-                        </label>
-                        <div>
-                          <MoodIcon
-                            sx={{ marginLeft: "10px" }}
-                            className="addSmileIcon"
+                  
+                  <div className="profileRightBottomAll">
+                    <div className="profileRightBottom">
+                      <Box
+                        className="postBox"
+                        sx={{
+                          width: 915,
+                          height: 240,
+                          backgroundColor: "primary.white",
+                          borderRadius: "5px",
+                        }}
+                      >
+                        <div className="postBoxTop">
+                          <Avatar
+                            alt="Remy Sharp"
+                            src={user.avatar || Img}
+                            sx={{ width: 50, height: 50 }}
                           />
-                          <p>Смайлики</p>
+                          <p>О чем вы думаете {user.name} ?</p>
                         </div>
-                        <Button
-                          sx={{ marginLeft: "64%", height: "40px" }}
-                          variant="contained"
-                          color="primary"
-                        >
-                          Опубликовать
-                        </Button>
-                      </div>
-                    </Box>
-                    <PostCard />
+                        <div className="postBoxMid">
+                          <TextField
+                            className="postBoxMidField"
+                            sx={{
+                              marginLeft: "50px",
+                              width: "90%",
+                            }}
+                            required
+                            id="standard-basic"
+                            variant="standard"
+                          />
+                        </div>
+                        <div className="postBoxBot">
+                          <div className="postBoxBotRow">
+                            <label>
+                              <AddPhotoAlternateIcon className="addPhotoIcon" />
+                              <input
+                                className="profileInputFile"
+                                type="file"
+                                name="image"
+                                accept="image/*"
+                                onChange={(e) => handleImageChange(e)}
+                              />
+                              <p>Фото</p>
+                            </label>
+                            <div className="postBoxBotSmile">
+                              <MoodIcon
+                                sx={{ marginLeft: "10px" }}
+                                className="addSmileIcon"
+                              />
+                              <p>Смайлики</p>
+                            </div>
+                          </div>
+                          <Button
+                            sx={{ height: "40px", marginRight: "6%" }}
+                            variant="contained"
+                            color="primary"
+                            className="postBoxBotBtn"
+                            onClick={handlePublish}
+                          >
+                            Опубликовать
+                          </Button>
+                        </div>
+                      </Box>
+                      <PostCard />
+                    </div>
                   </div>
                 </div>
-                </div>
-            </>
+              </>
             )}
+          </div>
         </div>
-      </div>
       </Container>
-      </>
+    </>
   );
 };
 
