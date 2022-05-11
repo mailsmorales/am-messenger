@@ -79,7 +79,7 @@ export default function PostCard({ id, description, imageUrl, createdAt }) {
           <OptionDots />
         }
         title={user.name}
-        subheader={createdAt.toDate().toDateString()}
+        subheader="1 minute ago"
         // {createdAt.toDate().toDateString()}
       />
       <CardContent>
