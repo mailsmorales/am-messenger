@@ -1,4 +1,4 @@
-import Sidebar from "../../components/sidebar/Sidebar";
+import Header from '../../components/Header/Header';
 import { Container } from "@material-ui/core";
 import "./messages.css";
 import React, { useEffect, useState } from "react";
@@ -63,7 +63,6 @@ function Messages() {
     e.preventDefault();
 
   };
-import Header from '../../components/Header/Header';
 
   return (
     <>
