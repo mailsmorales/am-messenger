@@ -89,12 +89,12 @@ opacity: 0.4;
     margin-left: 250px;
 }
 
-.profileRightBottom .postBox, 
-.profileRightBottom .profilePost{
+.postBox, 
+.profilePost{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.profileRightBottom .profilePost{
+.profilePost{
     margin-top: 50px;
 }
 
@@ -116,7 +116,34 @@ opacity: 0.4;
     display: flex;
     margin: 40px 0 0 50px;
 }
-
+.postBoxBot {
+    display: flex;
+    justify-content: space-between;
+}
+.postBoxBotRow {
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width:775px) {
+    .postBoxMid {
+        width: 90%;
+    }
+}
+@media screen and (max-width:440px) {
+    .postBoxBot{
+        display: flex;
+        padding-bottom: 5%;
+        flex-direction: column;
+    }
+    .postBoxBotRow {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%;
+    }
+    .postBoxMid {
+        width: 80%;
+    }
+}
 .postBox .postBoxBot .addPhotoIcon,
 .postBox .postBoxBot .addSmileIcon{
     width:40px;

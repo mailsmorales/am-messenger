@@ -51,7 +51,7 @@ const CardCreate = () => {
   }, [img]);
 
   return (
-    <Box className="postBox" sx={{ width: 915, height: 240, backgroundColor: "primary.white", borderRadius: "5px",}}>
+    <Box className="postBox" sx={{ width: '100%', height: '30%', backgroundColor: "primary.white", borderRadius: "5px",}}>
         {user && (
             <>
             <div className="postBoxTop">
@@ -64,6 +64,7 @@ const CardCreate = () => {
             </div>
             <div className="postBoxMid">
               <TextField
+              className="postBoxMidField"
                 sx={{
                   marginLeft: "50px",
                   width: "90%",
@@ -74,7 +75,8 @@ const CardCreate = () => {
               />
             </div>
             <div className="postBoxBot">
-              <label>
+                <div className="postBoxBotRow">
+                <label>
                 <AddPhotoAlternateIcon className="addPhotoIcon" />
                 <input className="profileInputFile" type="file" />
                 <p>Фото</p>
@@ -86,10 +88,12 @@ const CardCreate = () => {
                 />
                 <p>Смайлики</p>
               </div>
+                </div>
               <Button
-                sx={{ marginLeft: "64%", height: "40px" }}
+                sx={{ height: "40px", marginRight:'6%' }}
                 variant="contained"
                 color="primary"
+                className="postBoxBotBtn"
               >
                 Опубликовать
               </Button>
