@@ -87,89 +87,116 @@ opacity: 0.4;
 
 
 
-.profileRightBottom .postBox, 
-.profileRightBottom .profilePost{
+.postBox, 
+.profilePost{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
-.profileRightBottom .profilePost{
+.profilePost{
     margin-top: 50px;
 }
 
-.profileRightBottom .postBox .postBoxTop{
+.postBox .postBoxTop{
     padding: 15px;
     display: flex;
 }
-.profileRightBottom .postBox .postBoxTop .avatar{
+.postBox .postBoxTop .avatar{
     width: 80;
     height: 80px;
     border-radius: 50%;
 }
-.profileRightBottom .postBox .postBoxTop p{
+.postBox .postBoxTop p{
     color: gray;
     margin: 15px 0 0 20px;
 }
 
-.profileRightBottom .postBox .postBoxBot{
+.postBox .postBoxBot{
     display: flex;
     margin: 40px 0 0 50px;
 }
-
-.profileRightBottom .postBox .postBoxBot .addPhotoIcon,
-.profileRightBottom .postBox .postBoxBot .addSmileIcon{
+.postBoxBot {
+    display: flex;
+    justify-content: space-between;
+}
+.postBoxBotRow {
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width:775px) {
+    .postBoxMid {
+        width: 90%;
+    }
+}
+@media screen and (max-width:440px) {
+    .postBoxBot{
+        display: flex;
+        padding-bottom: 5%;
+        flex-direction: column;
+    }
+    .postBoxBotRow {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5%;
+    }
+    .postBoxMid {
+        width: 80%;
+    }
+}
+.postBox .postBoxBot .addPhotoIcon,
+.postBox .postBoxBot .addSmileIcon{
     width:40px;
     height:40px;
     margin-right: 10px; 
     cursor: pointer;
 }
 
-.profileRightBottom .postBox .postBoxBot  p{
+.postBox .postBoxBot  p{
     cursor: pointer;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo{
+.profilePost .profilePostTop .profilePostTopInfo{
     display: flex;
     padding: 15px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo img{
+ .profilePost .profilePostTop .profilePostTopInfo img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopInfo h4{
+.profilePost .profilePostTop .profilePostTopInfo h4{
     margin: 10px 0 0 20px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopDesc p{
+.profilePost .profilePostTop .profilePostTopDesc p{
     margin: 10px 0 0 20px;
 }
 
-.profileRightBottom .profilePost .profilePostTop .profilePostTopDesc{
+.profilePost .profilePostTop .profilePostTopDesc{
     overflow-x:hidden; 
     max-width: 880px;
 }
 
-.profileRightBottom .profilePost .profilePostMid img{
+.profilePost .profilePostMid img{
     width: 800px auto;
     height: 508px auto;
 }
 
-.profileRightBottom .profilePost .profilePostMid{
+.profilePost .profilePostMid{
     padding: 20px;
 }
 
-.profileRightBottom .profilePost .profilePostBot{
+.profilePost .profilePostBot{
     padding: 20px;
     display: flex;
 }
 
-.profileRightBottom .profilePost .profilePostBot .profilePostBotLikes p{
+.profilePost .profilePostBot .profilePostBotLikes p{
     margin: -30px 0 0 40px;
 }
 
-.profileRightBottom .profilePost .profilePostBot h4{
+.profilePost .profilePostBot h4{
     margin: 0 0 0 600px;
     cursor: pointer;
     text-decoration: underline;

@@ -4,6 +4,7 @@ import Protected from "./components/topbar/Protected";
 import Home from "./pages/home/Home";
 import Messages from "./pages/message/Messages";
 import Music from "./pages/music/Music";
+import Photos from "./pages/photos/Photos";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 
@@ -12,9 +13,6 @@ function App() {
     <>
       <Routes>
         <Route path="/register" element={<Register />}></Route>
-create-music-page-with-video
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/music" element={<Music />}></Route>
         <Route
           exact
           path="/"
@@ -38,6 +36,24 @@ create-music-page-with-video
           element={
             <Protected>
               <Messages />
+            </Protected>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/music"
+          element={
+            <Protected>
+              <Music />
+            </Protected>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/photos"
+          element={
+            <Protected>
+              <Photos />
             </Protected>
           }
         ></Route>

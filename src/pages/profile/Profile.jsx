@@ -18,6 +18,7 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Container } from "@material-ui/core";
+import Header from "../../components/Header/Header";
 
 const Profile = () => {
   const [img, setImg] = useState("");
@@ -69,7 +70,7 @@ const Profile = () => {
 
   return (
     <>
-      <SideBar />
+    <Header />
       <img className="profileCoverImg" src={Artwork} />
       <Container sx={{ maxWidth: "1200px" }}>
         <div className="profile">
@@ -94,6 +95,29 @@ const Profile = () => {
                               onChange={(e) => setImg(e.target.files[0])}
                             />
                           </div>
+      
+      <div className="profile">
+        <div className="profileRight">
+          {user && (
+            <>
+              <div className="profileRightTop">
+                <div className="profileCover">
+                  <img className="profileCoverImg" src={Artwork} />
+                  <div className="profile_container">
+                    <div className="img_container">
+                      <img src={user.avatar || Img} alt="avatar" />
+                      <div className="overlay">
+                        <div>
+                          <label htmlFor="photo">
+                            <Camera />
+                          </label>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            style={{ display: "none" }}
+                            id="photo"
+                            onChange={(e) => setImg(e.target.files[0])}
+                          />
                         </div>
                       </div>
                     </div>

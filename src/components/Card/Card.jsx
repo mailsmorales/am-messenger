@@ -8,7 +8,6 @@ import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {faker} from '@faker-js/faker'
 import OptionDots from '../OptionDots/OptionDots';
 import CardButtons from '../Card/CardButtons'
@@ -30,9 +29,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function PostCard() {
-  const [likeCount, setLikeCount] = useState(0)
-  const [DisLikeCount, setDisLikeCount] = useState(0)
+export default function PostCard({ description, imageUrl, createdAt }) {
   const [user, setUser] = useState();
   const [img, setImg] = useState("");
 
@@ -86,26 +83,22 @@ export default function PostCard() {
           <OptionDots />
         }
         title={user.name}
-        subheader="10 мая 2022"
+        subheader={createdAt.toDate().toDateString()}
       />
       <CardContent>
         <Typography sx={{fontSize:18, color:'#252525'}} variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the mussels,
-          if you like.
+          {description}
         </Typography>
       </CardContent>
       <CardMedia
         sx={{padding:'0 20px'}}
         component="img"
         height="600"
-        image={faker.image.animals()}
+        image={imageUrl}
         alt="Paella dish"
       />
       <CardActions disableSpacing>
         <CardButtons />
-          {/* <ThumbUpIcon onClick={() => setLikeCount(likeCount +1)} />{likeCount}
-          <ThumbDownIcon onClick={() => setDisLikeCount(DisLikeCount +1)} />{DisLikeCount} */}
       </CardActions>
     </Card>
     )}

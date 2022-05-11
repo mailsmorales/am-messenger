@@ -63,10 +63,11 @@ function Messages() {
     e.preventDefault();
 
   };
+import Header from '../../components/Header/Header';
 
   return (
     <>
-      <Sidebar />
+      <Header/>
       <Container sx={{ maxWidth: "1200px" }}>
         <div className="home_container">
           <div className="users-container">
@@ -95,6 +96,10 @@ function Messages() {
           </div>
         </div>
       </Container>
+    
+    <div>
+        adawdawdawdawdaawawdawddddddddddd
+    </div>
     </>
   );
 }
